@@ -1,0 +1,34 @@
+pg_end_copy -- 与 PostgreSQL 后端同步
+
+  bool pg_end_copy([resource connection])~
+
+|pg_end_copy| 在处理完 |pg_put_line| 所执行的拷贝操作之后将
+PostgreSQL 前端（通常为 web server 进程）与 PostgreSQL
+服务器进行同步。|pg_end_copy| 必须被调用，否则 PostgreSQL
+服务器可能会和前端失去同步并报错。
+
+{connection} PostgreSQL database connection resource. When {connection} is not
+present, the default connection is used. The default connection is the last
+connection made by |pg_connect| or |pg_pconnect|.
+
+Returns TRUE on success or &false; on failure.
+
+|pg_end_copy| 例子
+
+<?php >
+    $conn = pg_pconnect("dbname=foo");
+    pg_query($conn, "create table bar (a int4, b char(16), d float8)");
+    pg_query($conn, "copy bar from stdin");
+    pg_put_line($conn, "3\thello world\t4.5\n");
+    pg_put_line($conn, "4\tgoodbye world\t7.11\n");
+    pg_put_line($conn, "\.\n");
+    pg_end_copy($conn);
+?>
+
+
+
+
+
+|pg_put_line|
+
+vim:ft=help:

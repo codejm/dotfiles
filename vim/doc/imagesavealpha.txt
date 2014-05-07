@@ -1,0 +1,50 @@
+imagesavealpha -- 设置标记以在保存 PNG 图像时保存完整的 alpha
+通道信息（与单一透明色相反）
+
+  bool imagesavealpha(resource image, bool saveflag)~
+
+|imagesavealpha| 设置标记以在保存 PNG 图像时保存完整的 alpha
+通道信息（与单一透明色相反）。
+
+要使用本函数，必须将 alphablending 清位（imagealphablending($im,
+false)）。
+
+不是所有的浏览器都支持 alpha
+通道，如果在你的浏览器上碰到问题，试着用兼容 alpha
+通道的浏览器（例如最新版的 Mozilla）重新加载脚本。
+
+{ image}An image resource, returned by one of the image creation functions,
+such as |imagecreatetruecolor|.
+
+{saveflag} 是否保存透明（alpha）通道。 默认 FALSE。
+
+Returns TRUE on success or &false; on failure.
+
+|imagesavealpha| 例子
+
+<?php >
+  // 载入带 alpha 通道的 png 图像
+  $png = imagecreatefrompng('./alphachannel_example.png');
+  
+  // 做些必须的操作
+  
+  // 关闭 alpha 渲染并设置 alpha 标志
+  imagealphablending($png, false);
+  imagesavealpha($png, true);
+  
+  // 输出图像到浏览器
+  header('Content-Type: image/png');
+  
+  imagepng($png);
+  imagedestroy($png);
+?>
+
+
+
+
+
+This function requires GD 2.0.1 or later (2.0.28 or later is recommended).
+
+|imagealphablending|
+
+vim:ft=help:

@@ -1,0 +1,65 @@
+mkdir -- 新建目录
+
+  bool mkdir(string pathname [, int mode [, bool recursive [, resource context]]])~
+
+尝试新建一个由 pathname 指定的目录。
+
+{pathname} 目录的路径。
+
+{mode} 默认的 mode 是 0777，意味着最大可能的访问权。有关
+mode 的更多信息请阅读 |chmod| 页面。
+
+{mode} 在 Windows 下被忽略。
+
+注意也许想用八进制数指定模式，也就是说该数应以零打头。模式也会被当前的
+umask 修改，可以用 |umask| 来改变。
+
+{recursive} Allows the creation of nested directories specified in the
+{pathname}.
+
+{context} Context support was added with PHP 5.0.0. For a description of
+contexts, refer to .
+
+Returns TRUE on success or &false; on failure.
+
+Version Description 5.0.0 添加 {recursive} 参数。 5.0.0 |mkdir|
+也可用于某些 URL 封装协议。参见 的列表看看 |mkdir|
+支持哪些 URL 封装协议。 4.2.0 {mode} 成为可选项。
+
+|mkdir| 例子
+
+<?php >
+  mkdir("/path/to/my/dir", 0700);
+?>
+
+
+
+
+
+通过 {recursive} 参数使用 |mkdir|
+
+<?php >
+  // Desired folder structure
+  $structure = './depth1/depth2/depth3/';
+  
+  // To create the nested structure, the $recursive parameter 
+  // to mkdir() must be specified.
+  
+  if (!mkdir($structure, 0, true)) {
+      die('Failed to create folders...');
+  }
+  
+  // ...
+?>
+
+
+
+
+
+When safe mode is enabled, PHP checks whether the directory in which the
+script is operating has the same UID (owner) as the script that is being
+executed.
+
+|is_dir| |rmdir|
+
+vim:ft=help:

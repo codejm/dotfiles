@@ -1,0 +1,42 @@
+bcompiler_write_class -- 写入定义过的类的字节码
+
+  bool bcompiler_write_class(resource filehandle, string className [, string extends])~
+
+从 PHP
+读取已存在的类的字节码，并把它们写入打开的文件句柄中。
+
+{filehandle} |fopen| 返回的文件句柄。
+
+{className} 字符串的类名。
+
+{extends}
+
+Returns TRUE on success or &false; on failure.
+
+|bcompiler_write_class| 例子
+
+<?php >
+  $fh = fopen("/tmp/example","w");
+  bcompiler_write_header($fh);
+  bcompiler_write_class($fh,"DB");
+  // 你必须先于 DB_mysql 写入 DB_common，因为DB_mysql extends DB_common。
+  bcompiler_write_class($fh,"DB_common");
+  bcompiler_write_class($fh,"DB_mysql");
+  bcompiler_write_footer($fh);
+  fclose($fh);
+?>
+
+
+
+
+
+This function is EXPERIMENTAL. The behaviour of this function, its name, and
+surrounding documentation may change without notice in a future release of
+PHP. This function should be used at your own risk.
+
+该函数不会执行依赖检查，所以确保你写入类的顺序，防止在加载的时候导致
+undefined class 错误。
+
+|bcompiler_write_header| |bcompiler_write_footer|
+
+vim:ft=help:

@@ -1,0 +1,14 @@
+ob_implicit_flush -- 打开/关闭绝对刷送
+
+  void ob_implicit_flush([int flag])~
+
+|ob_implicit_flush|将打开或关闭绝对（隐式）刷送。绝对（隐式）刷送将导致在每次输出调用后有一次刷送操作，以便不再需要对
+|flush| 的显式调用。
+
+{flag} 设为TRUE 打开绝对刷送，反之是 FALSE 。
+
+No value is returned.
+
+|flush| |ob_start| |ob_end_flush|
+
+vim:ft=help:

@@ -1,0 +1,58 @@
+var_dump -- 打印变量的相关信息
+
+  void var_dump(mixed expression [, mixed ...])~
+
+此函数显示关于一个或多个表达式的结构信息，包括表达式的类型与值。数组将递归展开值，通过缩进显示其结构。
+
+In PHP 5 all public, private and protected properties of objects will be
+returned in the output.
+
+As with anything that outputs its result directly to the browser, the
+output-control functions can be used to capture the output of this function,
+and save it in a string (for example).
+
+{expression} 你要打印的变量。
+
+No value is returned.
+
+|var_dump| 例子
+
+<?php >
+  $a = array(1, 2, array("a", "b", "c"));
+  var_dump($a);
+?>
+
+The above example will output:
+
+  array(3) {
+    [0]=>
+    int(1)
+    [1]=>
+    int(2)
+    [2]=>
+    array(3) {
+      [0]=>
+      string(1) "a"
+      [1]=>
+      string(1) "b"
+      [2]=>
+      string(1) "c"
+    }
+  }
+
+<?php >
+  $b = 3.1;
+  $c = true;
+  var_dump($b, $c);
+?>
+
+The above example will output:
+
+  float(3.1)
+  bool(true)
+
+
+
+|var_export| |print_r|
+
+vim:ft=help:

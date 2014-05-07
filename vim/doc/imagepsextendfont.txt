@@ -1,0 +1,35 @@
+imagepsextendfont -- 扩充或精简字体
+
+  bool imagepsextendfont(resource font_index, float extend)~
+
+扩充或精简某字体（{font_index}）。如果 {extend}
+参数的值小于一则是精简该字体。
+
+{font_index} 由 |imagepsloadfont| 返回的字体资源。
+
+{extend} 扩展的值，必须大于 0。
+
+Returns TRUE on success or &false; on failure.
+
+|imagepsextendfont| 例子
+
+<?php >
+  // Load a .pfb font file
+  $font = imagepsloadfont('./px3l.pfb');
+  
+  // Extend the font by 2.5
+  imagepsextendfont($font, 2.5);
+  
+  // Do any operations with the font here
+  
+  // Free the font from memory
+  imagepsfreefont($font);
+?>
+
+
+
+
+
+This function is only available if PHP is compiled using --with-t1lib[=DIR].
+
+vim:ft=help:

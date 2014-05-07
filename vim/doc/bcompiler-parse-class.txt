@@ -1,0 +1,34 @@
+bcompiler_parse_class --
+读取一个类的字节码并回调一个用户的函数
+
+  bool bcompiler_parse_class(string class, string callback)~
+
+读取一个类的字节码并回调一个用户的函数。
+
+{class} 字符串，类名。
+
+{callback}
+
+Returns TRUE on success or &false; on failure.
+
+|bcompiler_parse_class| 例子
+
+<?php >
+  function readByteCodes($data) {
+      print_r($data);
+  }
+  
+  bcompiler_parse_class("DB","readByteCodes");
+?>
+
+
+
+
+
+This function is EXPERIMENTAL. The behaviour of this function, its name, and
+surrounding documentation may change without notice in a future release of
+PHP. This function should be used at your own risk.
+
+自 bcompiler 0.5 起，该函数已从 bcompiler 中删除并不再有效。
+
+vim:ft=help:

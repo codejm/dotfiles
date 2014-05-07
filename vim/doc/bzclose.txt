@@ -1,0 +1,14 @@
+bzclose -- 关闭一个 bzip2 文件
+
+  int bzclose(resource bz)~
+
+关闭给出的 bzip2 文件指针。
+
+{bz} 文件指针。它必须是有效的并且指向 |bzopen|
+成功打开的文件。
+
+Returns TRUE on success or &false; on failure.
+
+|bzopen|
+
+vim:ft=help:

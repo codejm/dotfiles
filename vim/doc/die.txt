@@ -1,0 +1,5 @@
+die -- 等同于 exit
+
+语法结构等同于 |exit|.
+
+vim:ft=help:

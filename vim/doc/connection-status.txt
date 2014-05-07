@@ -1,0 +1,13 @@
+connection_status -- 返回连接的状态位
+
+  int connection_status()~
+
+获得当前连接的状态位。
+
+获得当前连接的状态位, 可以用于与 CONNECTION_XXX
+定义的常量来确定连接状态。
+
+|connection_aborted| |ignore_user_abort| 查看连接处理
+了解PHP处理连接的详情。
+
+vim:ft=help:

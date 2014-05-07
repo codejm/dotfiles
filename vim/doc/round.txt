@@ -1,0 +1,61 @@
+round -- 对浮点数进行四舍五入
+
+  float round(float val [, int precision [, int mode]])~
+
+返回将 {val} 根据指定精度
+{precision}（十进制小数点后数字的数目）进行四舍五入的结果。{precision}
+也可以是负数或零（默认值）。
+
+PHP 默认不能正确处理类似 "12,300.2"
+的字符串。见字符串转换为数值。
+
+{val} 要处理的值
+
+{precision} 可选的十进制小数点后数字的数目。
+
+{mode} 以下之一： PHP_ROUND_HALF_UP、 PHP_ROUND_HALF_DOWN
+PHP_ROUND_HALF_EVEN 或 PHP_ROUND_HALF_ODD
+
+四舍五入后的值
+
+|round| 例子
+
+<?php >
+  echo round(3.4);         // 3
+  echo round(3.5);         // 4
+  echo round(3.6);         // 4
+  echo round(3.6, 0);      // 4
+  echo round(1.95583, 2);  // 1.96
+  echo round(1241757, -3); // 1242000
+  echo round(5.045, 2);    // 5.05
+  echo round(5.055, 2);    // 5.06
+?>
+
+
+
+
+
+{mode} 例子
+
+<?php >
+  echo round(9.5, 0, PHP_ROUND_HALF_UP);   // 10
+  echo round(9.5, 0, PHP_ROUND_HALF_DOWN); // 9
+  echo round(9.5, 0, PHP_ROUND_HALF_EVEN); // 10
+  echo round(9.5, 0, PHP_ROUND_HALF_ODD);  // 9
+  
+  echo round(8.5, 0, PHP_ROUND_HALF_UP);   // 9
+  echo round(8.5, 0, PHP_ROUND_HALF_DOWN); // 8
+  echo round(8.5, 0, PHP_ROUND_HALF_EVEN); // 8
+  echo round(8.5, 0, PHP_ROUND_HALF_ODD);  // 9
+?>
+
+
+
+
+
+Version Description 5.3.0 引入了 {mode} 参数 5.2.7 |round|
+的内部运作修改符合 C99 的标准。
+
+|ceil| |floor| |number_format|
+
+vim:ft=help:

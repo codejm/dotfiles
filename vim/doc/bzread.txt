@@ -1,0 +1,41 @@
+bzread -- bzip2 文件二进制安全地读取
+
+  string bzread(resource bz [, int length])~
+
+|bzread| 从指定的 bzip2 文件指针中读取数据。
+
+读取到
+{length}（未经压缩的长度）个字节，或者到文件尾，取决于先到哪个。
+
+{bz} 文件指针。它必须是有效的并且指向 |bzopen|
+成功打开的文件。
+
+{length} 如果没有提供， |bzread| 一次会读入 1024
+个字节（未经压缩的长度）。 一次最大可读入 8192
+个未压缩的字节。
+
+返回解压的数据，在错误时返回 FALSE。
+
+|bzread| 范例
+
+<?php >
+  $file = "/tmp/foo.bz2";
+  $bz = bzopen($file, "r") or die("Couldn't open $file");
+  
+  $decompressed_file = '';
+  while (!feof($bz)) {
+    $decompressed_file .= bzread($bz, 4096);
+  }
+  bzclose($bz);
+  
+  echo "The contents of $file are: <br />\n";
+  echo $decompressed_file;
+?>
+
+
+
+
+
+|bzwrite| |feof| |bzopen|
+
+vim:ft=help:

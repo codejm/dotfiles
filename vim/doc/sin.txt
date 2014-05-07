@@ -1,0 +1,25 @@
+sin -- 正弦
+
+  float sin(float arg)~
+
+|sin| 返回参数 {arg} 的正弦值。参数 {arg} 的单位为弧度。
+
+{arg} 单位是弧度的值。
+
+{arg} 的正弦值
+
+|sin| 例子
+
+<?php >
+  // 返回值的精度由配置中的 precision 指示确定
+  echo sin(deg2rad(60));  //  0.866025403 ...
+  echo sin(60);           // -0.304810621 ...
+?>
+
+
+
+
+
+|asin| |sinh| |cos| |tan| |deg2rad|
+
+vim:ft=help:

@@ -1,0 +1,14 @@
+bzflush -- 强制写入所有写缓冲区的数据
+
+  int bzflush(resource bz)~
+
+强制写入 bzip2 文件指针 {bz} 的所有写缓冲数据。
+
+{bz} 文件指针。它必须是有效的并且指向 |bzopen|
+成功打开的文件。
+
+Returns TRUE on success or &false; on failure.
+
+|bzread| |bzwrite|
+
+vim:ft=help:

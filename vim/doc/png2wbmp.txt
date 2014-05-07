@@ -1,0 +1,42 @@
+png2wbmp -- 将 PNG 图像文件转换为 WBMP 图像文件
+
+  bool png2wbmp(string pngname, string wbmpname, int dest_height, int dest_width, int threshold)~
+
+将名为 {pngname} 的 PNG 文件转换为 WBMP 格式，并存为
+{wbmpname}。用 {d_height} 和 {d_width}
+指定目标图像的高度和宽度。
+
+{pngname} PNG 文件的路径。
+
+{wbmpname} 目标 WBMP 文件的路径。
+
+{dest_height} 目标图像的高度。
+
+{dest_width} 目标图像的宽度。
+
+{threshold} 阈值，在 0 到 8 之间（含）。
+
+Returns TRUE on success or &false; on failure.
+
+|png2wbmp| 例子
+
+<?php >
+  // Path to the target png
+  $path = './test.png';
+  
+  // Get the image sizes
+  $image = getimagesize($path);
+  
+  // Convert image
+  png2wbmp($path, './test.wbmp', $image[1], $image[0], 7);
+?>
+
+
+
+
+
+WBMP support is only available if PHP was compiled against GD-1.8 or later.
+
+|jpeg2wbmp|
+
+vim:ft=help:

@@ -1,0 +1,14 @@
+ob_clean -- 清空（擦掉）输出缓冲区
+
+  void ob_clean()~
+
+此函数用来丢弃输出缓冲区中的内容。
+
+此函数不会销毁输出缓冲区，而像 |ob_end_clean|
+函数会销毁输出缓冲区。
+
+No value is returned.
+
+|ob_flush| |ob_end_flush| |ob_end_clean|
+
+vim:ft=help:

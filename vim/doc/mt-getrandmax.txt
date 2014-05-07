@@ -1,0 +1,29 @@
+mt_getrandmax -- 显示随机数的最大可能值
+
+  int mt_getrandmax()~
+
+返回调用 |mt_rand| 所能返回的最大的随机数。
+
+返回调用 |mt_rand| 所能返回的最大的随机数。
+
+计算一个随机浮点数
+
+<?php >
+  function randomFloat($min = 0, $max = 1) {
+      return $min + mt_rand() / mt_getrandmax() * ($max - $min);
+  }
+  
+  var_dump(randomFloat());
+  var_dump(randomFloat(2, 20));
+?>
+
+The above example will output something similar to:
+
+  float(0.91601131712832)
+  float(16.511210331931)
+
+
+
+|mt_rand| |mt_srand| |getrandmax|
+
+vim:ft=help:

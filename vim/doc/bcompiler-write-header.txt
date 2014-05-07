@@ -1,0 +1,35 @@
+bcompiler_write_header -- 写入 bcompiler 头
+
+  bool bcompiler_write_header(resource filehandle [, string write_ver])~
+
+写入一个 bcompiler 文件的头部。
+
+{filehandle} |fopen| 返回的一个文件句柄。
+
+{write_ver}
+能够用以前使用的格式写入字节码，这样就可以在较旧的
+bcompiler 版本中使用。
+
+Returns TRUE on success or &false; on failure.
+
+|bcompiler_write_header| 例子
+
+<?php >
+  $fh = fopen("/tmp/example","w");
+  bcompiler_write_header($fh);
+  bcompiler_write_class($fh,"DB");
+  bcompiler_write_footer($fh);
+  fclose($fh);
+?>
+
+
+
+
+
+This function is EXPERIMENTAL. The behaviour of this function, its name, and
+surrounding documentation may change without notice in a future release of
+PHP. This function should be used at your own risk.
+
+|bcompiler_write_footer|
+
+vim:ft=help:

@@ -1,0 +1,66 @@
+uasort --
+使用用户自定义的比较函数对数组中的值进行排序并保持索引关联
+
+  bool uasort(array array, callable cmp_function)~
+
+本函数对数组排序并保持索引和单元之间的关联。
+
+主要用于对那些单元顺序很重要的结合数组进行排序。比较函数是用户自定义的。
+
+{array} 输入的数组。
+
+{cmp_function} 用户自定义比较函数的例子请参考 |usort| 和
+|uksort|。
+
+Returns TRUE on success or &false; on failure.
+
+|uasort| 的基本例子
+
+<?php >
+  // Comparison function
+  function cmp($a, $b) {
+      if ($a == $b) {
+          return 0;
+      }
+      return ($a < $b) ? -1 : 1;
+  }
+  
+  // Array to be sorted
+  $array = array('a' => 4, 'b' => 8, 'c' => -1, 'd' => -9, 'e' => 2, 'f' => 5, 'g' => 3, 'h' => -4);
+  print_r($array);
+  
+  // Sort and print the resulting array
+  uasort($array, 'cmp');
+  print_r($array);
+?>
+
+The above example will output:
+
+  Array
+  (
+      [a] => 4
+      [b] => 8
+      [c] => -1
+      [d] => -9
+      [e] => 2
+      [f] => 5
+      [g] => 3
+      [h] => -4
+  )
+  Array
+  (
+      [d] => -9
+      [h] => -4
+      [c] => -1
+      [e] => 2
+      [g] => 3
+      [a] => 4
+      [f] => 5
+      [b] => 8
+  )
+
+
+
+|usort| The comparison of array sorting functions
+
+vim:ft=help:

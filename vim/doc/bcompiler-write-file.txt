@@ -1,0 +1,38 @@
+bcompiler_write_file -- 写入 PHP 源码文件的字节码
+
+  bool bcompiler_write_file(resource filehandle, string filename)~
+
+这个函数将指定的源码编译成字节码，并将它们写入打开的文件句柄中。
+
+{filehandle} |fopen| 返回的一个文件句柄。
+
+{filename} 源码文件路径，字符串的形式。
+
+Returns TRUE on success or &false; on failure.
+
+|bcompiler_write_file| 例子
+
+<?php >
+  $fh = fopen("example.phb", "w");
+  bcompiler_write_header($fh);
+  bcompiler_write_file($fh, "example.php");
+  bcompiler_write_footer($fh);
+  fclose($fh);
+  /* 以下是相等的：
+  include "example.php";
+     和
+  include "example.phb";
+  */
+?>
+
+
+
+
+
+This function is EXPERIMENTAL. The behaviour of this function, its name, and
+surrounding documentation may change without notice in a future release of
+PHP. This function should be used at your own risk.
+
+|bcompiler_write_header| |bcompiler_write_footer|
+
+vim:ft=help:

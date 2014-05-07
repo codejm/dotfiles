@@ -1,0 +1,46 @@
+is_readable -- 判断给定文件名是否可读
+
+  bool is_readable(string filename)~
+
+判断给定文件名是否存在并且可读。
+
+{filename} 文件的路径。
+
+如果由 {filename} 指定的文件或目录存在并且可读则返回
+TRUE，否则返回 FALSE。
+
+|is_readable| 例子
+
+<?php >
+  $filename = 'test.txt';
+  if (is_readable($filename)) {
+      echo 'The file is readable';
+  } else {
+      echo 'The file is not readable';
+  }
+?>
+
+
+
+
+
+Upon failure, an E_WARNING is emitted.
+
+记住 PHP 也许只能以运行 webserver 的用户名（通常为
+'nobody'）来访问文件。不计入安全模式的限制。 Safe mode
+limitations are not taken into account before PHP 5.1.5.
+
+The results of this function are cached. See |clearstatcache| for more
+details.
+
+As of PHP 5.0.0, this function can also be used with some URL wrappers. Refer
+to to determine which wrappers support |stat| family of functionality.
+
+The check is done using the real UID/GID instead of the effective one.
+
+对于目录这个函数可能会返回 TRUE。请使用 |is_dir|
+来区分文件和目录。
+
+|is_writable| |file_exists| |fgets|
+
+vim:ft=help:

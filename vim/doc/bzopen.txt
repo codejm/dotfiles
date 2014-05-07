@@ -1,0 +1,30 @@
+bzopen -- 打开一个经 bzip2 压缩过的文件
+
+  resource bzopen(string filename, string mode)~
+
+|bzopen| 打开一个 bzip2（.bz2）文件用于读或写。
+
+{filename} 待打开的文件的文件名。
+
+{mode} 和 |fopen| 函数类似，但仅仅支持 'r'（读）和
+'w'（写）。 其他任何模式都会导致 bzopen 返回 FALSE。
+
+如果打开失败，|bzopen| 会返回
+FALSE，否则返回一个指向最新打开文件的指针。
+
+|bzopen| 范例
+
+<?php >
+  $file = "/tmp/foo.bz2";
+  $bz = bzopen($file, "r") or die("Couldn't open $file for reading");
+  
+  bzclose($bz);
+?>
+
+
+
+
+
+|bzclose|
+
+vim:ft=help:

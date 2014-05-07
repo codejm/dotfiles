@@ -1,0 +1,13 @@
+gc_collect_cycles -- 强制收集所有现存的垃圾循环周期
+
+  int gc_collect_cycles()~
+
+强制收集所有现存的垃圾循环周期。
+
+This function has no parameters.
+
+返回收集的循环数量。
+
+垃圾回收机制
+
+vim:ft=help:

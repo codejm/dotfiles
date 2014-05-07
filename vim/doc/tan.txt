@@ -1,0 +1,23 @@
+tan -- 正切
+
+  float tan(float arg)~
+
+|tan| 返回参数 {arg} 的正切值。参数 {arg} 的单位为弧度。
+
+{arg} 要处理的以弧度为单位的参数
+
+{arg} 的正切值
+
+|tan| 例子
+
+<?php >
+  echo tan(M_PI_4); // 1
+?>
+
+
+
+
+
+|atan| |atan2| |sin| |cos| |tanh| |deg2rad|
+
+vim:ft=help:

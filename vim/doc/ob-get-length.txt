@@ -1,0 +1,35 @@
+ob_get_length -- 返回输出缓冲区内容的长度
+
+  int ob_get_length()~
+
+此函数将返回输出缓中冲区内容的长度。
+
+返回输出缓冲区内容的长度；或者返回FALSE——如果没有起作用的缓冲区。
+
+A simple |ob_get_length| example
+
+<?php >
+  ob_start();
+  
+  echo "Hello ";
+  
+  $len1 = ob_get_length();
+  
+  echo "World";
+  
+  $len2 = ob_get_length();
+  
+  ob_end_clean();
+  
+  echo $len1 . ", ." . $len2;
+?>
+
+The above example will output:
+
+  6, 11
+
+
+
+|ob_start| |ob_get_contents|
+
+vim:ft=help:

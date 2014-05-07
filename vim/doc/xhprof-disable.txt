@@ -1,0 +1,47 @@
+xhprof_disable -- 停止 xhprof 分析器
+
+  array xhprof_disable()~
+
+停止性能分析，并返回此次运行的 xhprof 数据。
+
+This function has no parameters.
+
+本次运行的 array 类型的 xhprof 数据。
+
+|xhprof_disable| 范例
+
+<?php >
+  xhprof_enable();
+  
+  $foo = strlen("foo bar");
+  
+  $xhprof_data = xhprof_disable();
+  
+  print_r($xhprof_data);
+?>
+
+The above example will output something similar to:
+
+  Array
+  (
+      [main()==>strlen] => Array
+          (
+              [ct] => 1
+              [wt] => 279
+          )
+  
+      [main()==>xhprof_disable] => Array
+          (
+              [ct] => 1
+              [wt] => 9
+          )
+  
+      [main()] => Array
+          (
+              [ct] => 1
+              [wt] => 610
+          )
+  
+  )
+
+vim:ft=help:

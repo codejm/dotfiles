@@ -1,0 +1,63 @@
+array_intersect_ukey -- 用回调函数比较键名来计算数组的交集
+
+  array array_intersect_ukey(array array1, array array2 [, array ..., callable key_compare_func])~
+
+|array_intersect_ukey| 返回一个数组，该数组包含了所有出现在
+{array1} 中并同时出现在所有其它参数数组中的键名的值。
+
+{array1} Initial array for comparison of the arrays.
+
+{array2} First array to compare keys against.
+
+{array} Variable list of array arguments to compare keys against.
+
+{key_compare_func} The comparison function must return an integer less than,
+equal to, or greater than zero if the first argument is considered to be
+respectively less than, equal to, or greater than the second.
+
+  int (array array1, array array2 [, array ..., callable key_compare_func, mixed a, mixed b])~
+
+Returns the values of {array1} whose keys exist in all the arguments.
+
+|array_intersect_ukey| 例子
+
+<?php >
+  function key_compare_func($key1, $key2)
+  {
+      if ($key1 == $key2)
+          return 0;
+      else if ($key1 > $key2)
+          return 1;
+      else
+          return -1;
+  }
+  
+  $array1 = array('blue'  => 1, 'red'  => 2, 'green'  => 3, 'purple' => 4);
+  $array2 = array('green' => 5, 'blue' => 6, 'yellow' => 7, 'cyan'   => 8);
+  
+  var_dump(array_intersect_ukey($array1, $array2, 'key_compare_func'));
+?>
+
+The above example will output:
+
+  array(2) {
+    ["blue"]=>
+    int(1)
+    ["green"]=>
+    int(3)
+  }
+
+
+
+上例中可以看到只有 'blue' 和 'green'
+两个键名出现在两个数组中，因此被返回。此外注意 'blue'
+和 'green'
+的值在两个数组中是不同的。但因为只检查键名，因此还是匹配。返回的值只是
+{array1} 中的。
+
+|array_diff| |array_udiff| |array_diff_assoc| |array_diff_uassoc|
+|array_udiff_assoc| |array_udiff_uassoc| |array_diff_key| |array_diff_ukey|
+|array_intersect| |array_intersect_assoc| |array_intersect_uassoc|
+|array_intersect_key|
+
+vim:ft=help:

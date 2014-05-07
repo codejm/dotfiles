@@ -1,0 +1,16 @@
+xhprof_sample_enable -- Description
+
+  void xhprof_sample_enable()~
+
+|xhprof_enable| 的更轻量的版本，以采样模式开始性能分析。
+抽样的间隔为 0.1 秒，样本记录了完整的函数调用堆栈。
+主要使用的情况是以较低的性能开销来进行性能监控和诊断。
+
+This function is currently not documented; only its argument list is
+available.
+
+This function has no parameters.
+
+NULL
+
+vim:ft=help:

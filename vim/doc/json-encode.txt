@@ -1,0 +1,158 @@
+json_encode -- 对变量进行 JSON 编码
+
+  string json_encode(mixed value [, int options])~
+
+返回 {value} 值的 JSON 形式
+
+{value} 待编码的 {value} ，除了resource
+类型之外，可以为任何数据类型
+
+该函数只能接受 UTF-8 编码的数据
+
+{options} 由以下常量组成的二进制掩码： JSON_HEX_QUOT,
+JSON_HEX_TAG, JSON_HEX_AMP, JSON_HEX_APOS, JSON_NUMERIC_CHECK,
+JSON_PRETTY_PRINT, JSON_UNESCAPED_SLASHES, JSON_FORCE_OBJECT,
+JSON_UNESCAPED_UNICODE.
+
+编码成功则返回一个以 JSON 形式表示的 string or FALSE on failure
+。
+
+Version Description 5.4.0 {options} 参数增加常量： JSON_PRETTY_PRINT,
+JSON_UNESCAPED_SLASHES, 和 JSON_UNESCAPED_UNICODE。 5.3.3 {options}
+参数增加常量：JSON_NUMERIC_CHECK。 5.3.0 增加 {options} 参数.
+
+A |json_encode| 的例子
+
+<?php >
+  $arr = array ('a'=>1,'b'=>2,'c'=>3,'d'=>4,'e'=>5);
+  
+  echo json_encode($arr);
+?>
+
+The above example will output:
+
+  {"a":1,"b":2,"c":3,"d":4,"e":5}
+
+|json_encode| 函数中 {options} 参数的用法
+
+<?php >
+  $a = array('<foo>',"'bar'",'"baz"','&amp;blong&', "\xc3\xa9");
+  
+  echo "Normal: ",  json_encode($a), "\n";
+  echo "Tags: ",    json_encode($a, JSON_HEX_TAG), "\n";
+  echo "Apos: ",    json_encode($a, JSON_HEX_APOS), "\n";
+  echo "Quot: ",    json_encode($a, JSON_HEX_QUOT), "\n";
+  echo "Amp: ",     json_encode($a, JSON_HEX_AMP), "\n";
+  echo "Unicode: ", json_encode($a, JSON_UNESCAPED_UNICODE), "\n";
+  echo "All: ",     json_encode($a, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE), "\n\n";
+  
+  $b = array();
+  
+  echo "Empty array output as array: ", json_encode($b), "\n";
+  echo "Empty array output as object: ", json_encode($b, JSON_FORCE_OBJECT), "\n\n";
+  
+  $c = array(array(1,2,3));
+  
+  echo "Non-associative array output as array: ", json_encode($c), "\n";
+  echo "Non-associative array output as object: ", json_encode($c, JSON_FORCE_OBJECT), "\n\n";
+  
+  $d = array('foo' => 'bar', 'baz' => 'long');
+  
+  echo "Associative array always output as object: ", json_encode($d), "\n";
+  echo "Associative array always output as object: ", json_encode($d, JSON_FORCE_OBJECT), "\n\n";
+?>
+
+The above example will output:
+
+  Normal: ["<foo>","'bar'","\"baz\"","&amp;blong&","\u00e9"]
+  Tags: ["\u003Cfoo\u003E","'bar'","\"baz\"","&blong&","\u00e9"]
+  Apos: ["<foo>","\u0027bar\u0027","\"baz\"","&blong&","\u00e9"]
+  Quot: ["<foo>","'bar'","\u0022baz\u0022","&blong&","\u00e9"]
+  Amp: ["<foo>","'bar'","\"baz\"","\u0026blong\u0026","\u00e9"]
+  Unicode: ["<foo>","'bar'","\"baz\"","&blong&","é"]
+  All: ["\u003Cfoo\u003E","\u0027bar\u0027","\u0022baz\u0022","\u0026blong\u0026","é"]
+  
+  Empty array output as array: []
+  Empty array output as object: {}
+  
+  Non-associative array output as array: [[1,2,3]]
+  Non-associative array output as object: {"0":{"0":1,"1":2,"2":3}}
+  
+  Associative array always output as object: {"foo":"bar","baz":"long"}
+  Associative array always output as object: {"foo":"bar","baz":"long"}
+
+连续与非连续数组示例
+
+<?php >
+  echo "连续数组".PHP_EOL;
+  $sequential = array("foo", "bar", "baz", "blong");
+  var_dump(
+   $sequential,
+   json_encode($sequential)
+  );
+  
+  echo PHP_EOL."非连续数组".PHP_EOL;
+  $nonsequential = array(1=>"foo", 2=>"bar", 3=>"baz", 4=>"blong");
+  var_dump(
+   $nonsequential,
+   json_encode($nonsequential)
+  );
+  
+  echo PHP_EOL."删除一个连续数组值的方式产生的非连续数组".PHP_EOL;
+  unset($sequential[1]);
+  var_dump(
+   $sequential,
+   json_encode($sequential)
+  );
+?>
+
+The above example will output:
+
+  连续数组
+  array(4) {
+    [0]=>
+    string(3) "foo"
+    [1]=>
+    string(3) "bar"
+    [2]=>
+    string(3) "baz"
+    [3]=>
+    string(5) "blong"
+  }
+  string(27) "["foo","bar","baz","blong"]"
+  
+  非连续数组
+  array(4) {
+    [1]=>
+    string(3) "foo"
+    [2]=>
+    string(3) "bar"
+    [3]=>
+    string(3) "baz"
+    [4]=>
+    string(5) "blong"
+  }
+  string(43) "{"1":"foo","2":"bar","3":"baz","4":"blong"}"
+  
+  删除一个连续数组值的方式产生的非连续数组
+  array(3) {
+    [0]=>
+    string(3) "foo"
+    [2]=>
+    string(3) "baz"
+    [3]=>
+    string(5) "blong"
+  }
+  string(33) "{"0":"foo","2":"baz","3":"blong"}"
+
+
+
+如果执行失败，可以通过 |json_last_error|
+函数来获取详细错误信息。
+
+如果要编码的数组的键不是从0开始的数字，所有的键将会被当作字符串，并明确声明为
+key-value 对。
+
+JsonSerializable |json_decode| |json_last_error|
+
+vim:ft=help:

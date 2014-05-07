@@ -1,0 +1,34 @@
+ob_get_clean -- 得到当前缓冲区的内容并删除当前输出缓。
+
+  string ob_get_clean()~
+
+得到当前缓冲区的内容并删除当前输出缓冲区。
+
+|ob_get_clean| 实质上是一起执行了 |ob_get_contents| 和
+|ob_end_clean|。
+
+返回输出缓冲区的内容，并结束输出缓冲区。如果输出缓冲区不是活跃的，即返回
+FALSE 。
+
+A simple |ob_get_clean| example
+
+<?php >
+  ob_start();
+  
+  echo "Hello World";
+  
+  $out = ob_get_clean();
+  $out = strtolower($out);
+  
+  var_dump($out);
+?>
+
+The above example will output:
+
+  string(11) "hello world"
+
+
+
+|ob_get_contents| |ob_start|
+
+vim:ft=help:

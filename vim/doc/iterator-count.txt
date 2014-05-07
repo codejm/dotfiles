@@ -1,0 +1,24 @@
+iterator_count -- 计算迭代器中元素的个数
+
+  int iterator_count(Traversable iterator)~
+
+计算迭代器中的元素个数。
+
+{iterator} 要计数的迭代器。
+
+迭代器{iterator}中的元素个数。
+
+|iterator_count| example
+
+<?php >
+  $iterator = new ArrayIterator(array('recipe'=>'pancakes', 'egg', 'milk', 'flour'));
+  var_dump(iterator_count($iterator));
+?>
+
+The above example will output:
+
+  int(4)
+
+
+
+vim:ft=help:

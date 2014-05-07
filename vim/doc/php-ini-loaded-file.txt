@@ -1,0 +1,31 @@
+php_ini_loaded_file -- 取得已加载的 php.ini 文件的路径
+
+  string php_ini_loaded_file()~
+
+检查是否有加载的 php.ini 文件，并取回它的路径。
+
+This function has no parameters.
+
+已加载的 php.ini 路径，或在没有时返回 FALSE。
+
+|php_ini_loaded_file| 例子
+
+<?php >
+  $inipath = php_ini_loaded_file();
+  
+  if ($inipath) {
+      echo 'Loaded php.ini: ' . $inipath;
+  } else {
+      echo 'A php.ini file is not loaded';
+  }
+?>
+
+The above example will output something similar to:
+
+  Loaded php.ini: /usr/local/php/php.ini
+
+
+
+|php_ini_scanned_files| |phpinfo| 配置文件
+
+vim:ft=help:

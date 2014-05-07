@@ -1,0 +1,5 @@
+pos -- current 的Alias of
+
+This function is an alias of: |current|。
+
+vim:ft=help:
