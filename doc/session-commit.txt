@@ -1,5 +1,0 @@
-session_commit -- session_write_close 的Alias of
-
-This function is an alias of: |session_write_close|。
-
-vim:ft=help:

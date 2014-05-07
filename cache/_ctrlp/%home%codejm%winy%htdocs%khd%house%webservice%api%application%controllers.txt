@@ -1,9 +1,0 @@
-homeController.php
-siteController.php
-userController.php
-brandController.php
-houseController.php
-captchaController.php
-chushouController.php
-specialsController.php
-kanfangcheController.php

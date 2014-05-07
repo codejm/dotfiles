@@ -1,5 +1,0 @@
-user_error -- trigger_error 的别名
-
-This function is an alias of: |trigger_error|.
-
-vim:ft=help:

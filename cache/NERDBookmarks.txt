@@ -1,6 +1,0 @@
-codejm /home/codejm
-dailai /home/codejm/winy/htdocs/khd/dailai
-gongjiao /home/codejm/winy/htdocs/khd/gongjiao
-house /home/codejm/winy/htdocs/khd/house/webservice/api
-vimfiles /home/codejm/local/Vim/vimfiles
-

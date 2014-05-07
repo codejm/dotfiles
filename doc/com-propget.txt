@@ -1,5 +1,0 @@
-com_propget -- com_get 的别名
-
-此函数是 |com_get| 的别名。
-
-vim:ft=help:
