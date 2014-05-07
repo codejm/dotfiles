@@ -62,6 +62,5 @@ vim/grep/ack.bat 环境变量
 # 关于作者 #
 -----------------------------------------------
 主页：http://www.codejm.com
-
 微博: http://weibo.com/codejm
 
