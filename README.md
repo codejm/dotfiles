@@ -3,7 +3,7 @@ CODEJM vim党党员
 # 安装 #
 -----------------------------------------------
 ** vim安装 **
-`
+
     windows:
     git clone https://github.com/codejm/Vim.git
     python 32位 : http://www.python.org/ftp/python/2.7.5/python-2.7.5.msi
@@ -14,7 +14,7 @@ CODEJM vim党党员
     cd ~/.vim
     git submodule init
     git submodule update
-`
+
 
 ** Ack搜索 **
 
