@@ -1,0 +1,45 @@
+fnmatch -- 用模式匹配文件名
+
+  bool fnmatch(string pattern, string string [, int flags])~
+
+|fnmatch| 检查传入的 {string} 是否匹配给出的 shell 统配符
+{pattern}。
+
+{pattern} shell 统配符。
+
+{string} 要检查的字符串。
+此函数对于文件名尤其有用，但也可以用于普通的字符串。
+
+普通用户可能习惯于 shell 模式或者至少其中最简单的形式
+'?' 和 '*' 通配符，因此使用 |fnmatch| 来代替 |preg_match|
+来进行前端搜索表达式输入对于非程序员用户更加方便。
+
+{flags} The value of {flags} can be any combination of the following flags,
+joined with the binary OR (|) operator. A list of possible flags for |fnmatch|
+{Flag} Description FNM_NOESCAPE Disable backslash escaping. FNM_PATHNAME Slash
+in string only matches slash in the given pattern. FNM_PERIOD Leading period
+in string must be exactly matched by period in the given pattern. FNM_CASEFOLD
+Caseless match. Part of the GNU extension.
+
+匹配则返回 TRUE，否则返回 FALSE。
+
+Version Description 5.3.0 此函数开始在 Windows 平台上生效。
+
+用 shell 中的通配符模式匹配来检查颜色名称
+
+<?php >
+  if (fnmatch("*gr[ae]y", $color)) {
+    echo "some form of gray ...";
+  }
+?>
+
+
+
+
+
+目前该函数无法在 Windows 或其它非 POSIX
+兼容的系统上使用。
+
+|glob| |preg_match| |sscanf| |printf| |sprintf|
+
+vim:ft=help:

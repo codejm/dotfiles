@@ -1,0 +1,13 @@
+gc_disable -- 停用循环引用收集器
+
+  void gc_disable()~
+
+停用循环引用收集器，设置 zend.enable_gc 为 0。
+
+This function has no parameters.
+
+No value is returned.
+
+垃圾回收机制
+
+vim:ft=help:

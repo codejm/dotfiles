@@ -1,0 +1,46 @@
+imagepsencodefont -- 改变字体中的字符编码矢量
+
+  bool imagepsencodefont(resource font_index, string encodingfile)~
+
+从文件中加载字符编码矢量并用其替换给定字体的编码矢量。由于
+PostScript 字体的默认矢量缺少大多数超过 127
+的字符位置，因此如果使用其它非英语的语言的话肯定需要改变它。编码文件的确切格式定义在
+T1lib 文档中。T1lib
+包含有两个可马上使用的文件，IsoLatin1.enc 和 IsoLatin2.enc。
+
+如果发现自己总是要用本函数，更好的定义编码的做法是在配置文件中将
+ps.default_encoding
+设定为指向正确的编码文件，这样加载的所有字体就会自动具有正确编码了。
+
+This function is only available if PHP is compiled using --with-t1lib[=DIR].
+
+{font_index} A font resource, returned by |imagepsloadfont|.
+
+{encodingfile} The exact format of this file is described in T1libs
+documentation. T1lib comes with two ready-to-use files, IsoLatin1.enc and
+IsoLatin2.enc.
+
+Returns TRUE on success or &false; on failure.
+
+|imagepsencodefont| example
+
+<?php >
+  // Load a .pfb font file
+  $font = imagepsloadfont('./px3l.pfb');
+  
+  // Tell T1lib to use ISO Latin 1 encoding
+  imagepsencode($font, './IsoLatin1.enc');
+  
+  // Do any operations with the font here
+  
+  // Free the font from memory
+  imagepsfreefont($font);
+?>
+
+
+
+
+
+This function is only available if PHP is compiled using --with-t1lib[=DIR].
+
+vim:ft=help:

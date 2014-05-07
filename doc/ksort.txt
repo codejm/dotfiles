@@ -1,0 +1,35 @@
+ksort -- 对数组按照键名排序
+
+  bool ksort(array array [, int sort_flags])~
+
+对数组按照键名排序，保留键名到数据的关联。本函数主要用于关联数组。
+
+{array} 输入的数组。
+
+{sort_flags} 可以用可选参数 {sort_flags}
+改变排序的行为，详情见 |sort|。
+
+Returns TRUE on success or &false; on failure.
+
+|ksort| 例子
+
+<?php >
+  $fruits = array("d"=>"lemon", "a"=>"orange", "b"=>"banana", "c"=>"apple");
+  ksort($fruits);
+  foreach ($fruits as $key => $val) {
+      echo "$key = $val\n";
+  }
+?>
+
+The above example will output:
+
+  a = orange
+  b = banana
+  c = apple
+  d = lemon
+
+
+
+|asort| The comparison of array sorting functions
+
+vim:ft=help:

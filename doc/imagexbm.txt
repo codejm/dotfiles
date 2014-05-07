@@ -1,0 +1,63 @@
+imagexbm -- 将 XBM 图像输出到浏览器或文件
+
+  bool imagexbm(resource image, string filename [, int foreground])~
+
+将 XBM 图像 {image} 输出到浏览器或文件
+
+{ image}An image resource, returned by one of the image creation functions,
+such as |imagecreatetruecolor|.
+
+{filename} The path to save the file to. If not set or NULL, the raw image
+stream will be outputted directly.
+
+{foreground} 你可以从 |imagecolorallocate|
+分配一个颜色，并设置为该前景色参数。
+默认颜色是黑色。
+
+Returns TRUE on success or &false; on failure.
+
+保存一个 XBM 文件
+
+<?php >
+  // 创建空白图像并添加文字
+  $im = imagecreatetruecolor(120, 20);
+  $text_color = imagecolorallocate($im, 233, 14, 91);
+  imagestring($im, 1, 5, 5,  'A Simple Text String', $text_color);
+  
+  // 保存图像
+  imagexbm($im, 'simpletext.xbm');
+  
+  // 释放内存
+  imagedestroy($im);
+?>
+
+
+
+
+
+以不同前景色保存一个 XBM 文件
+
+<?php >
+  // 创建空白图像并添加文字
+  $im = imagecreatetruecolor(120, 20);
+  $text_color = imagecolorallocate($im, 233, 14, 91);
+  imagestring($im, 1, 5, 5,  'A Simple Text String', $text_color);
+  
+  // 设置替换的前景色
+  $foreground_color = imagecolorallocate($im, 255, 0, 0);
+  
+  // 保存图像
+  imagexbm($im, NULL, $foreground_color);
+  
+  // 释放内存
+  imagedestroy($im);
+?>
+
+
+
+
+
+This function is only available if PHP is compiled with the bundled version of
+the GD library.
+
+vim:ft=help:

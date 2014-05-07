@@ -1,0 +1,25 @@
+sys_getloadavg -- 获取系统的负载（load average）
+
+  array sys_getloadavg()~
+
+返回三个系统负载（系统运行队列中的进程数）的样本数据，分别是1分钟、5分钟和15分钟之前。
+
+返回一个包含1分钟、5分钟和15分钟之前采样数据的array。
+
+|sys_getloadavg| 的例子
+
+<?php >
+  $load = sys_getloadavg();
+  if ($load[0] > 80) {
+      header('HTTP/1.1 503 Too busy, try again later');
+      die('Server too busy. Please try again later.');
+  }
+?>
+
+
+
+
+
+This function is not implemented on Windows platforms.
+
+vim:ft=help:

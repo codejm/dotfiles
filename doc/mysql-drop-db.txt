@@ -1,0 +1,64 @@
+mysql_drop_db -- 丢弃（删除）一个 MySQL 数据库
+
+  bool mysql_drop_db(string database_name [, resource link_identifier])~
+
+|mysql_drop_db|
+尝试丢弃（删除）指定连接标识所关联的服务器上的一整个数据库。
+
+Returns TRUE on success or &false; on failure.
+
+为向下兼容也可以用 |mysql_dropdb|，但反对这样做。
+
+不提倡使用 |mysql_drop_db| 函数。最好用 |mysql_query| 提交一条
+SQL DROP DATABASE 语句来替代。
+
+如果 MySQL 扩展库是基于 MySQL 4.x
+客户端库建立的，则本函数不可用。
+
+参见 |mysql_create_db| 和 |mysql_query|。
+
+{database_name} The name of the database that will be deleted.
+
+{ link_identifier}The MySQL connection. If the link identifier is not
+specified, the last link opened by |mysql_connect| is assumed. If no such link
+is found, it will try to create one as if |mysql_connect| was called with no
+arguments. If no connection is found or established, an E_WARNING level error
+is generated.
+
+Returns TRUE on success or &false; on failure.
+
+|mysql_drop_db| alternative example
+
+<?php >
+  $link = mysql_connect('localhost', 'mysql_user', 'mysql_password');
+  if (!$link) {
+      die('Could not connect: ' . mysql_error());
+  }
+  
+  $sql = 'DROP DATABASE my_db';
+  if (mysql_query($sql, $link)) {
+      echo "Database my_db was successfully dropped\n";
+  } else {
+      echo 'Error dropping database: ' . mysql_error() . "\n";
+  }
+?>
+
+
+
+
+
+Use of this extension is discouraged. Instead, the MySQLi or PDO_MySQL
+extension should be used. See also MySQL: choosing an API guide and related
+FAQ for more information. Alternatives to this function include:
+
+Execute a DROP DATABASE query
+
+This function will not be available if the MySQL extension was built against a
+MySQL 4.x client library.
+
+For backward compatibility, the following deprecated alias may be used:
+|mysql_dropdb|
+
+|mysql_query|
+
+vim:ft=help:

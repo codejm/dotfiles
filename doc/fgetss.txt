@@ -1,0 +1,58 @@
+fgetss -- 从文件指针中读取一行并过滤掉 HTML 标记
+
+  string fgetss(resource handle [, int length [, string allowable_tags]])~
+
+和 |fgets| 相同，只除了 |fgetss|
+尝试从读取的文本中去掉任何 HTML 和 PHP 标记。
+
+{handle} The file pointer must be valid, and must point to a file successfully
+opened by |fopen| or |fsockopen| (and not yet closed by |fclose|).
+
+{length} 取回该长度的数据。
+
+{allowable_tags}
+可以用可选的第三个参数指定哪些标记不被去掉。
+
+从 {handle} 指向的文件中大读取 {length} - 1
+个字节的字符，并过滤了所有的 HTML 和 PHP 代码。
+
+错误发生时返回 FALSE。
+
+Version Description 5.0.0 参数 {length} 从 此开始可选。
+
+一行行读取一个 PHP 文件
+
+<?php >
+  $str = <<<EOD
+  <html><body>
+   <p>Welcome! Today is the <?php echo(date('jS')); ?> of <?= date('F'); ?>.</p>
+  </body></html>
+  Text outside of the HTML block.
+  EOD;
+  file_put_contents('sample.php', $str);
+  
+  $handle = @fopen("sample.php", "r");
+  if ($handle) {
+      while (!feof($handle)) {
+          $buffer = fgetss($handle, 4096);
+          echo $buffer;
+      }
+      fclose($handle);
+  }
+?>
+
+The above example will output something similar to:
+
+  Welcome! Today is the  of .
+  
+  Text outside of the HTML block.
+
+
+
+If PHP is not properly recognizing the line endings when reading files either
+on or created by a Macintosh computer, enabling the auto_detect_line_endings
+run-time configuration option may help resolve the problem.
+
+|fgets| |fopen| |popen| |fsockopen| |strip_tags|
+
+vim:ft=help:

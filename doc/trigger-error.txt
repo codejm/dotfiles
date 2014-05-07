@@ -1,0 +1,35 @@
+trigger_error -- 产生一个用户级别的 error/warning/notice 信息
+
+  bool trigger_error(string error_msg [, int error_type])~
+
+用于触发一个用户级别的错误条件，它能结合内置的错误处理器所关联，或者可以使用用户定义的函数作为新的错误处理程序(|set_error_handler|)。
+
+该函数在你运行出现异常时，需要产生一个特定的响应时非常有用。
+
+{error_msg} 该 error
+的特定错误信息，长度限制在了1024个字符。超过1024长度的字符都会被截断。
+
+{error_type} 该 error 所特定的错误类型。仅 E_USER
+系列常量对其有效，默认是 E_USER_NOTICE。
+
+如果指定了错误的 {error_type} 会返回 FALSE ，正确则返回
+TRUE。
+
+|trigger_error| 示例 |set_error_handler| 可见到更多详细的例子。
+
+<?php >
+  if ($divisor == 0) {
+      trigger_error("Cannot divide by zero", E_USER_ERROR);
+  }
+?>
+
+
+
+在 {error_msg} 里的HTML实体 并不会被转义。
+如果错误消息要显示在浏览器里，需要对错误消息使用
+|htmlentities|。
+
+|error_reporting| |set_error_handler| |restore_error_handler| The
+错误级别常量
+
+vim:ft=help:

@@ -1,0 +1,30 @@
+ob_end_clean -- 清空（擦除）缓冲区并关闭输出缓冲
+
+  bool ob_end_clean()~
+
+此函数丢弃最顶层输出缓冲区的内容并关闭这个缓冲区。如果想要进一步处理缓冲区的内容，必须在|ob_end_clean|之前调用|ob_get_contents|，因为当调用|ob_end_clean|时缓冲区内容将被丢弃。
+
+Returns TRUE on success or &false; on failure.
+错误的原因首先是，在调用时没有一个起作用的缓冲区，或者是因为某些原因缓冲区不能被删除（可能对特殊缓冲区而言）。
+
+如果函数失败了，将引发一个E_NOTICE异常。
+
+Version Description 4.2.0 添加了布尔返回值。
+
+下面的例子给出了一种去除所有输出缓冲区的方法：
+
+|ob_end_clean| example
+
+<?php >
+  ob_start();
+  echo 'Text that won\'t get displayed.';
+  ob_end_clean();
+?>
+
+
+
+
+
+|ob_start| |ob_get_contents| |ob_flush|
+
+vim:ft=help:

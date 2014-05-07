@@ -1,0 +1,38 @@
+chdir -- 改变目录
+
+  bool chdir(string directory)~
+
+将 PHP 的当前目录改为 {directory}。
+
+{directory} 新的当前目录
+
+Returns TRUE on success or &false; on failure.
+
+Throws an error of level E_WARNING on failure.
+
+|chdir| 例子
+
+<?php >
+  // current directory
+  echo getcwd() . "\n";
+  
+  chdir('public_html');
+  
+  // current directory
+  echo getcwd() . "\n";
+?>
+
+The above example will output something similar to:
+
+  /home/vincent
+  /home/vincent/public_html
+
+
+
+When safe mode is enabled, PHP checks whether the directory in which the
+script is operating has the same UID (owner) as the script that is being
+executed.
+
+|getcwd|
+
+vim:ft=help:

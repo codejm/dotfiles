@@ -1,0 +1,46 @@
+imagecolormatch --
+使一个图像中调色板版本的颜色与真彩色版本更能匹配
+
+  bool imagecolormatch(resource image1, resource image2)~
+
+使一个图像中调色板版本的颜色与真彩色版本更能匹配。
+
+{image1} 真彩色图像连接资源。
+
+{image2} 必须是调色板图像，而且和 {image1}
+的大小必须相同。
+
+Returns TRUE on success or &false; on failure.
+
+|imagecolormatch| 例子
+
+<?php >
+  // Setup the true color and palette images
+  $im1 = imagecreatefrompng('./gdlogo.png');
+  $im2 = imagecreate(imagesx($im1), imagesy($im1));
+  
+  // Add some colors to $im2
+  $colors   = Array();
+  $colors[] = imagecolorallocate($im2, 255, 36, 74);
+  $colors[] = imagecolorallocate($im2, 40, 0, 240);
+  $colors[] = imagecolorallocate($im2, 82, 100, 255);
+  $colors[] = imagecolorallocate($im2, 84, 63, 44);
+  
+  // Match these colors with the true color image
+  imagecolormatch($im1, $im2);
+  
+  // Free from memory
+  imagedestroy($im1);
+  imagedestroy($im2);
+?>
+
+
+
+This function is only available if PHP is compiled with the bundled version of
+the GD library.
+
+This function requires GD 2.0.1 or later (2.0.28 or later is recommended).
+
+|imagecreatetruecolor|
+
+vim:ft=help:

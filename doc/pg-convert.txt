@@ -1,0 +1,51 @@
+pg_convert -- 将关联的数组值转换为适合 SQL 语句的格式。
+
+  array pg_convert(resource connection, string table_name, array assoc_array [, int options])~
+
+|pg_convert| 检查 assoc_array 中的值并将其转换为为适用于 SQL
+语句的值。|pg_convert| 的前提条件是现有的表 table_name
+中具有的列至少有 assoc_array 中的单元那么多。table_name
+中的字段名以及字段值必须和 assoc_array
+中的键名及值匹配。如果成功则返回一个包括转换后的值的数组，否则返回
+FALSE。
+
+If there are boolean fields in {table_name} don't use the constant TRUE in
+{assoc_array}. It will be converted to the string 'TRUE' which is no valid
+entry for boolean fields in PostgreSQL. Use one of t, true, 1, y, yes instead.
+
+This function is EXPERIMENTAL. The behaviour of this function, its name, and
+surrounding documentation may change without notice in a future release of
+PHP. This function should be used at your own risk.
+
+{connection} PostgreSQL database connection resource.
+
+{table_name} Name of the table against which to convert types.
+
+{assoc_array} Data to be converted.
+
+{options} Any number of PGSQL_CONV_IGNORE_DEFAULT, PGSQL_CONV_FORCE_NULL or
+PGSQL_CONV_IGNORE_NOT_NULL, combined.
+
+An array of converted values, or FALSE on error.
+
+|pg_convert| example
+
+<?php >
+    $dbconn = pg_connect('dbname=foo');
+    
+    $tmp = array(
+        'author' => 'Joe Thackery',
+        'year' => 2005,
+        'title' => 'My Life, by Joe Thackery'
+    );
+    
+    $vals = pg_convert($dbconn, 'authors', $tmp);
+?>
+
+
+
+
+
+|pg_meta_data|
+
+vim:ft=help:

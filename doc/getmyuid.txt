@@ -1,0 +1,11 @@
+getmyuid -- 获取 PHP 脚本所有者的 UID
+
+  int getmyuid()~
+
+获取当前脚本的用户 ID。
+
+返回当前脚本的用户 ID，或在错误时返回 FALSE。
+
+|getmygid| |getmypid| |get_current_user| |getmyinode| |getlastmod|
+
+vim:ft=help:

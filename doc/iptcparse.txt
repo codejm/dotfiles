@@ -1,0 +1,30 @@
+iptcparse -- 将二进制 IPTC 块解析为单个标记
+
+  array iptcparse(string iptcblock)~
+
+本函数将一个二进制的 IPTC 块解析为单个的标记。
+
+{iptcblock} 二进制的 IPTC 块。
+
+返回一个数组，用 tagmarker
+作为索引，以其值为值。如果出错或未发现 IPTC 数据则返回
+FALSE。
+
+iptcparse() used together with |getimagesize|
+
+<?php >
+  $size = getimagesize('./test.jpg', $info);
+  if(isset($info['APP13']))
+  {
+      $iptc = iptcparse($info['APP13']);
+      var_dump($iptc);
+  }
+?>
+
+
+
+
+
+This function does not require the GD image library.
+
+vim:ft=help:

@@ -1,0 +1,23 @@
+zend_logo_guid -- 获取 Zend guid
+
+  string zend_logo_guid()~
+
+该函数返回了一个 ID，能够使用内置的图像来显示 Zend
+logo。
+
+返回 PHPE9568F35-D428-11d2-A769-00AA001ACF42.
+
+|zend_logo_guid| 例子
+
+<?php >
+  echo '<img src="' . $_SERVER['PHP_SELF'] .
+       '?=' . zend_logo_guid() . '" alt="Zend Logo !" />';
+?>
+
+
+
+
+
+|php_logo_guid|
+
+vim:ft=help:

@@ -1,0 +1,23 @@
+gc_enabled -- 返回循环引用计数器的状态
+
+  bool gc_enabled()~
+
+返回循环引用计数器的状态。
+
+This function has no parameters.
+
+如果垃圾收集器已启用则返回 TRUE，否则返回 FALSE。
+
+一个 |gc_enabled| 例子
+
+<?php >
+  if(gc_enabled()) gc_collect_cycles();
+?>
+
+
+
+
+
+垃圾回收机制
+
+vim:ft=help:

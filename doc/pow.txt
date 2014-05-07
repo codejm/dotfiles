@@ -1,0 +1,41 @@
+pow -- 指数表达式
+
+  number pow(number base, number exp)~
+
+返回 {base} 的 {exp} 次方的幂。如果可能，本函数会返回
+integer。
+
+{base} The base to use
+
+{exp} 指数
+
+{base} 的 {exp} 次方的幂。 If both arguments are non-negative integers
+and the result can be represented as an integer, the result will be returned
+with integer type, otherwise it will be returned as a float.
+
+Version Description 4.2.0
+如果不能计算幂，将发出一条警告，|pow| 将返回 FALSE。|pow|
+开始不产生任何的警告。 4.0.6 如果可能函数现在会返回
+integer 的结果，之前 总是返回 float，For older versions, you may
+receive a bogus result for complex numbers.
+
+|pow| 的一些例子
+
+<?php >
+  var_dump(pow(2, 8)); // int(256)
+  echo pow(-1, 20); // 1
+  echo pow(0, 0); // 1
+  
+  echo pow(-1, 5.5); // PHP >4.0.6  NAN
+  echo pow(-1, 5.5); // PHP <=4.0.6 1.#IND
+?>
+
+
+
+
+
+本函数会转换所有输入为数字，即使是非标量值，会导致怪异的（weird）结果。
+
+|exp| |sqrt| |bcpow| |gmp_pow|
+
+vim:ft=help:

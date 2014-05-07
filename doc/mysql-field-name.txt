@@ -1,0 +1,88 @@
+mysql_field_name -- 取得结果中指定字段的字段名
+
+  string mysql_field_name(resource result, int field_index)~
+
+|mysql_field_name| 返回指定字段索引的字段名。{result}
+必须是一个合法的结果标识符，{field_index}
+是该字段的数字偏移量。
+
+{field_index} 从 0 开始。
+
+例如，第三个字段的索引值其实是
+2，第四个字段的索引值是 3，以此类推。
+
+Field names returned by this function are case-sensitive.
+
+|mysql_field_name| 例子
+
+<?php >
+  /* The users table consists of three fields:
+   *   user_id
+   *   username
+   *   password.
+   */
+  $link = mysql_connect('localhost', "mysql_user", "mysql_password");
+  $dbname = "mydb";
+  mysql_select_db($dbname, $link)
+      or die("Could not set $dbname: " . mysql_error());
+  $res = mysql_query("select * from users", $link);
+  
+  echo mysql_field_name($res, 0) . "\n";
+  echo mysql_field_name($res, 2);
+?>
+
+以上例子将产生如下输出：
+
+  user_id
+  password
+
+
+
+为向下兼容仍然可以使用 |mysql_fieldname|，但反对这样做。
+
+{ result}The result resource that is being evaluated. This result comes from a
+call to |mysql_query|.
+
+{ field_offset}The numerical field offset. The {field_offset} starts at 0. If
+{field_offset} does not exist, an error of level E_WARNING is also issued.
+
+The name of the specified field index on success or FALSE on failure.
+
+|mysql_field_name| example
+
+<?php >
+  /* The users table consists of three fields:
+   *   user_id
+   *   username
+   *   password.
+   */
+  $link = mysql_connect('localhost', 'mysql_user', 'mysql_password');
+  if (!$link) {
+      die('Could not connect to MySQL server: ' . mysql_error());
+  }
+  $dbname = 'mydb';
+  $db_selected = mysql_select_db($dbname, $link);
+  if (!$db_selected) {
+      die("Could not set $dbname: " . mysql_error());
+  }
+  $res = mysql_query('select * from users', $link);
+  
+  echo mysql_field_name($res, 0) . "\n";
+  echo mysql_field_name($res, 2);
+?>
+
+The above example will output:
+
+  user_id
+  password
+
+
+
+Field names returned by this function are case-sensitive.
+
+For backward compatibility, the following deprecated alias may be used:
+|mysql_fieldname|
+
+|mysql_field_type| |mysql_field_len|
+
+vim:ft=help:

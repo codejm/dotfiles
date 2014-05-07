@@ -1,0 +1,29 @@
+pclose -- 关闭进程文件指针
+
+  int pclose(resource handle)~
+
+关闭用 |popen| 打开的指向管道的文件指针。
+
+{handle} 文件指针必须有效，且必须是成功调用 |popen|
+所返回的。
+
+返回运行的进程的终止状态。发生错误时会返回 -1。
+
+|pclose| 例子
+
+<?php >
+  $handle = popen('/bin/ls', 'r');
+  pclose($handle);
+?>
+
+
+
+
+
+|proc_close| is internally implemented using the waitpid(3) system call. To
+obtain the real exit status code the |pcntl_wexitstatus| function should be
+used.
+
+|popen|
+
+vim:ft=help:

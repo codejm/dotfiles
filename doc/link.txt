@@ -1,0 +1,36 @@
+link -- 建立一个硬连接
+
+  bool link(string target, string link)~
+
+|link| 建立一个硬连接。
+
+{target} 要链接的目标。
+
+{link} 链接的名称。
+
+Returns TRUE on success or &false; on failure.
+
+Windows下：该功能需要以 elevated 模式运行，或者关闭 UAC。
+
+Version Description 5.3.0 该功能在 Windows
+平台下开始有效（Vista、 Server 2008 或更高版本）。
+
+Creating a simple hard link
+
+<?php >
+  $target = 'source.ext'; // This is the file that already exists
+  $link = 'newfile.ext'; // This the filename that you want to link it to
+  
+  link($target, $link);
+?>
+
+
+
+
+
+This function will not work on remote files as the file to be examined must be
+accessible via the server"s filesystem.
+
+|symlink| |readlink| |linkinfo|
+
+vim:ft=help:

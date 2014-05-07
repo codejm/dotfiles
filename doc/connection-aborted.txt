@@ -1,0 +1,12 @@
+connection_aborted -- 检查客户端是否已经断开
+
+  int connection_aborted()~
+
+检查客户端是否已经断开。
+
+如果客户端已经断开则返回1，否则返回0。
+
+|connection_status| |ignore_user_abort| 查看连接处理
+了解PHP处理连接的详情。
+
+vim:ft=help:

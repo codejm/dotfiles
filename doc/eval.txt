@@ -1,0 +1,56 @@
+eval -- 把字符串作为PHP代码执行
+
+  mixed eval(string code_str)~
+
+把字符串 {code_str} 作为PHP代码执行。
+除了其他，该函数能够执行储存于数据库文本字段内的PHP代码。
+
+使用 |eval|
+时需注意几个因素：注意字符必须是有效的PHP代码，包括结尾的分号，以不至于解释器在
+|eval| 之后退出。并且正确地转义 {code_str}
+中的东西。你可以使用一个PHP闭合标签来混合输出HTML和PHP代码。
+
+同时需注意eval中的变量会被保留在之后的主脚本中。
+
+{code_str} 需要被执行的字符串 {code_str} 不能包含 PHP Opening
+tags。
+
+return 语句会立即中止当前字符串的执行。
+
+|eval| 返回 NULL，除非在执行的代码中 return
+了一个值，函数返回该值。
+如果在执行的代码中有一个解析错误，|eval| 返回
+FALSE，之后的代码将正常执行。无法使用 |set_error_handler|
+捕获 |eval| 中的解析错误。
+
+|eval| 例子 - 简单的文本合并
+
+<?php >
+  $string = 'cup';
+  $name = 'coffee';
+  $str = 'This is a $string with my $name in it.';
+  echo $str. "\n";
+  eval("\$str = \"$str\";");
+  echo $str. "\n";
+?>
+
+The above example will output:
+
+  This is a $string with my $name in it.
+  This is a cup with my coffee in it.
+
+
+
+Because this is a language construct and not a function, it cannot be called
+using variable functions.
+
+As with anything that outputs its result directly to the browser, the
+output-control functions can be used to capture the output of this function,
+and save it in a string (for example).
+
+如果在执行的代码中产生了一个致命的错误（fatal
+error），整个脚本会退出。
+
+|call_user_func|
+
+vim:ft=help:

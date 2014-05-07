@@ -1,0 +1,12 @@
+getmyinode -- 获取当前脚本的索引节点（inode）
+
+  int getmyinode()~
+
+获取当前脚本的索引节点（inode）。
+
+以整型返回当前脚本的索引节点（inode），或在错误时返回
+FALSE。
+
+|getmygid| |getmyuid| |getmypid| |get_current_user| |getlastmod|
+
+vim:ft=help:

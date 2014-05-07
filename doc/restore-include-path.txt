@@ -1,0 +1,33 @@
+restore_include_path -- 还原 include_path 配置选项的值
+
+  void restore_include_path()~
+
+还原到 php.ini 中设置的 include_path 主值。
+
+No value is returned.
+
+|restore_include_path| 例子
+
+<?php >
+  echo get_include_path();  // .:/usr/local/lib/php
+  
+  set_include_path('/inc');
+  
+  echo get_include_path();  // /inc
+  
+  // 自 PHP 4.3.0 起可用
+  restore_include_path();
+  
+  // 所有版本均可用
+  ini_restore('include_path');
+  
+  echo get_include_path();  // .:/usr/local/lib/php
+?>
+
+
+
+
+
+|ini_restore| |get_include_path| |set_include_path| |include|
+
+vim:ft=help:

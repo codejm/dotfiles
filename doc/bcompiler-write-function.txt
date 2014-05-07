@@ -1,0 +1,37 @@
+bcompiler_write_function -- 以字节码写入定义过的函数
+
+  bool bcompiler_write_function(resource filehandle, string functionName)~
+
+从 PHP
+读取现存函数的字节码，并把它们写入打开的文件句柄中。顺序并不重要。
+（例如假设函数 b 用到了函数
+a，你以下面的例子那样编译它们，将会工作得很好）
+
+{filehandle} |fopen| 返回的一个文件句柄。
+
+{functionName} 函数名，字符串的形式。
+
+Returns TRUE on success or &false; on failure.
+
+|bcompiler_write_function| 例子
+
+<?php >
+  $fh = fopen("/tmp/example","w");
+  bcompiler_write_header($fh);
+  bcompiler_write_function($fh,"my_function_a");
+  bcompiler_write_function($fh,"my_function_b");
+  bcompiler_write_footer($fh);
+  fclose($fh);
+?>
+
+
+
+
+
+This function is EXPERIMENTAL. The behaviour of this function, its name, and
+surrounding documentation may change without notice in a future release of
+PHP. This function should be used at your own risk.
+
+|bcompiler_write_header| |bcompiler_write_footer|
+
+vim:ft=help:

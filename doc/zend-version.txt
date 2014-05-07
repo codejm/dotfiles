@@ -1,0 +1,23 @@
+zend_version -- 获取当前 Zend 引擎的版本
+
+  string zend_version()~
+
+获取当前运行的 Zend 引擎的版本字符串。
+
+获取 Zend 引擎的版本数字的字符串。
+
+|zend_version| 例子
+
+<?php >
+  echo "Zend engine version: " . zend_version();
+?>
+
+The above example will output something similar to:
+
+  Zend engine version: 2.2.0
+
+
+
+|phpinfo| |phpcredits| |php_logo_guid| |phpversion|
+
+vim:ft=help:

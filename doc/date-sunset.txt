@@ -1,0 +1,58 @@
+date_sunset -- 返回给定的日期与地点的日落时间
+
+  mixed date_sunset(int timestamp [, int format [, float latitude [, float longitude [, float zenith [, float gmt_offset]]]]])~
+
+|date_sunset| 返回给定的日期（以 {timestamp}
+指定）与地点的日落时间。
+
+{timestamp} 返回给定的日期（以 {timestamp}
+指定）的日落时间。
+
+{format} {format} 常量 常量 说明 取值举例 SUNFUNCS_RET_STRING 以
+string 格式返回结果 16:46 SUNFUNCS_RET_DOUBLE 以 float
+格式返回结果 16.78243132 SUNFUNCS_RET_TIMESTAMP 以 integer
+格式（时间戳）返回结果 1095034606
+
+{latitude}
+默认是指北纬。因此如果要指定南纬，必须传递一个负值。参见：
+date.default_latitude。
+
+{longitude}
+默认是指东经。因此如果要指定西经，必须传递一个负值。参见：
+date.default_longitude
+
+{zenith} 默认： date.sunset_zenith。
+
+{gmtoffset} 单位是小时。
+
+Every call to a date/time function will generate a E_NOTICE if the time zone
+is not valid, and/or a E_STRICT or E_WARNING message if using the system
+settings or the TZ environment variable. See also |date_default_timezone_set|
+
+Version Description 5.1.0 Now issues the E_STRICT and E_NOTICE time zone
+errors.
+
+用指定的格式 {format} 返回日落时间， or FALSE on failure。
+
+|date_sunset| 例子
+
+<?php >
+  /* calculate the sunset time for Lisbon, Portugal
+  Latitude: 38.4 North
+  Longitude: 9 West
+  Zenith ~= 90
+  offset: +1 GMT
+  */
+  
+  echo date("D M d Y"). ', sunset time : ' .date_sunset(time(), SUNFUNCS_RET_STRING, 38.4, -9, 90, 1);
+?>
+
+The above example will output something similar to:
+
+  Mon Dec 20 2004, sunset time : 18:13
+
+
+
+|date_sunrise|
+
+vim:ft=help:

@@ -1,0 +1,57 @@
+fseek -- 在文件指针中定位
+
+  int fseek(resource handle, int offset [, int whence])~
+
+在与 {handle} 关联的文件中设定文件指针位置。
+新位置从文件头开始以字节数度量，是以 {whence}
+指定的位置加上 {offset}。
+
+In general, it is allowed to seek past the end-of-file; if data is then
+written, reads in any unwritten region between the end-of-file and the sought
+position will yield bytes with value 0. However, certain streams may not
+support this behavior, especially when they have an underlying fixed size
+storage.
+
+{handle} A file system pointer resource that is typically created using
+|fopen|.
+
+{offset} 偏移量。
+
+要移动到文件尾之前的位置，需要给 {offset}
+传递一个负值，并设置 {whence} 为 SEEK_END。
+
+{whence} {whence} values are: SEEK_SET - 设定位置等于 {offset} 字节。
+SEEK_CUR - 设定位置为当前位置加上 {offset}。 SEEK_END -
+设定位置为文件尾加上 {offset}。
+
+成功则返回 0；否则返回 -1。注意移动到 EOF
+之后的位置不算错误。
+
+|fseek| 例子
+
+<?php >
+  $fp = fopen('somefile.txt', 'r');
+  
+  // read some data
+  $data = fgets($fp, 4096);
+  
+  // move back to the beginning of the file
+  // same as rewind($fp);
+  fseek($fp, 0);
+?>
+
+
+
+
+
+如果使用附加模试（a 或
+a+），任何写入文件数据都会被附加上去，而文件的位置将会被忽略，调用
+|fseek| 的结果尚未定义。
+
+Not all streams support seeking. For those that do not support seeking,
+forward seeking from the current position is accomplished by reading and
+discarding data; other forms of seeking will fail.
+
+|ftell| |rewind|
+
+vim:ft=help:

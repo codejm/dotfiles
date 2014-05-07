@@ -1,0 +1,40 @@
+is_writable -- 判断给定的文件名是否可写
+
+  bool is_writable(string filename)~
+
+如果文件存在并且可写则返回 TRUE。{filename}
+参数可以是一个允许进行是否可写检查的目录名。
+
+记住 PHP 也许只能以运行 webserver 的用户名（通常为
+'nobody'）来访问文件。不计入安全模式的限制。
+
+{filename} 要检查的文件名称。
+
+如果文件 {filename} 存在并且可写则返回 TRUE。
+
+|is_writable| 例子
+
+<?php >
+  $filename = 'test.txt';
+  if (is_writable($filename)) {
+      echo 'The file is writable';
+  } else {
+      echo 'The file is not writable';
+  }
+?>
+
+
+
+
+
+Upon failure, an E_WARNING is emitted.
+
+The results of this function are cached. See |clearstatcache| for more
+details.
+
+As of PHP 5.0.0, this function can also be used with some URL wrappers. Refer
+to to determine which wrappers support |stat| family of functionality.
+
+|is_readable| |file_exists| |fwrite|
+
+vim:ft=help:

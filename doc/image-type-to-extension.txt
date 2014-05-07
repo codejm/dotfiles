@@ -1,0 +1,30 @@
+image_type_to_extension -- 取得图像类型的文件后缀
+
+  string image_type_to_extension(int imagetype [, bool include_dot])~
+
+根据给定的常量 IMAGETYPE_XXX 返回后缀名。
+
+{imagetype} IMAGETYPE_XXX 系列常量之一。
+
+{include_dot} 是否在后缀名前加一个点。默认是 TRUE。
+
+根据指定的图像类型返回对应的后缀名。
+
+|image_type_to_extension| 例子
+
+<?php >
+  // 创建图像实例
+  $im = imagecreatetruecolor(100, 100);
+  
+  // 保存图像
+  imagepng($im, './test' . image_type_to_extension(IMAGETYPE_PNG));
+  imagedestroy($im);
+?>
+
+
+
+
+
+This function does not require the GD image library.
+
+vim:ft=help:

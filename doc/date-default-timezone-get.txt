@@ -1,0 +1,63 @@
+date_default_timezone_get --
+取得一个脚本中所有日期时间函数所使用的默认时区
+
+  string date_default_timezone_get()~
+
+本函数返回默认时区，使用如下“假定”的顺序： 用
+|date_default_timezone_set| 函数设定的时区（如果设定了的话）
+
+仅仅在 PHP 5.4.0 之前： TZ 环境变量（如果非空）
+
+date.timezone 配置选项（如果设定了的话）
+
+仅仅在 PHP 5.4.0 之前： 查询操作系统主机
+(如果操作系统支持并允许)。 This uses an algorithm that has to
+guess the timezone. This is by no means going to work correctly for every
+situation. A warning is shown when this stage is reached. Do not rely on it to
+be guessed correctly, and set date.timezone to the correct timezone instead.
+
+如果以上选择都不成功，date_default_timezone_get 会则返回 UTC
+的默认时区。
+
+返回一个 string。
+
+Version Description 5.4.0 不再使用 TZ 来推测时区。 5.4.0
+不再根据操作系统的信息来推测时区，因为这是不可靠的。
+
+获取默认时区
+
+<?php >
+  date_default_timezone_set('Europe/London');
+  
+  if (date_default_timezone_get()) {
+      echo 'date_default_timezone_set: ' . date_default_timezone_get() . '<br />';
+  }
+  
+  if (ini_get('date.timezone')) {
+      echo 'date.timezone: ' . ini_get('date.timezone');
+  }
+?>
+
+The above example will output something similar to:
+
+  date_default_timezone_set: Europe/London
+  date.timezone: Europe/London
+
+
+
+获取一个时区的简写
+
+<?php >
+  date_default_timezone_set('America/Los_Angeles');
+  echo date_default_timezone_get() . ' => ' . date('e') . ' => ' . date('T');
+?>
+
+The above example will output:
+
+  America/Los_Angeles => America/Los_Angeles => PST
+
+
+
+|date_default_timezone_set|
+
+vim:ft=help:

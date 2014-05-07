@@ -1,0 +1,35 @@
+highlight_file -- 语法高亮一个文件
+
+  mixed highlight_file(string filename [, bool return])~
+
+使用PHP内置的语法高亮器所定义的颜色，打印输出或者返回
+{filename} 文件中语法高亮版本的代码。
+
+许多服务器配置了自动高亮 phps 扩展的文件。 比如，访问
+example.phps 会显示语法高亮后的文件。 添加以下一行代码到
+httpd.conf 使此生效：
+
+
+
+  AddType application/x-httpd-php-source .phps
+
+{filename} 欲高亮文件的路径。
+
+{return} 设置该参数为 TRUE 使函数返回高亮后的代码。
+
+如果 {return} 设置为
+TRUE，高亮后的代码不会被打印输出，而是以字符串的形式返回。
+高亮成功返回 TRUE，否则返回 FALSE。
+
+Version Description 4.2.1 该函数现在也受 safe_mode 和 open_basedir
+的限制和影响。 4.2.0 添加了 {return} 的参数。
+
+应当注意在使用 |highlight_file|
+时，确认没有在不经意间泄漏敏感信息，类似密码或者其他任何具有潜在安全风险的信息。
+
+When the {return} parameter is used, this function uses internal output
+buffering so it cannot be used inside an |ob_start| callback function.
+
+|highlight_string|
+
+vim:ft=help:

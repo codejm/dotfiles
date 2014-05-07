@@ -1,0 +1,42 @@
+copy -- 拷贝文件
+
+  bool copy(string source, string dest [, resource context])~
+
+将文件从 {source} 拷贝到 {dest}。
+
+如果要移动文件的话，请使用 |rename| 函数。
+
+{source} 源文件路径。
+
+{dest} 目标路径。如果 {dest} 是一个
+URL，则如果封装协议不支持覆盖已有的文件时拷贝操作会失败。
+
+如果目标文件已存在，将会被覆盖。
+
+{context} A valid context resource created with |stream_context_create|.
+
+Returns TRUE on success or &false; on failure.
+
+Version Description 5.3.0 增加了对 context 的支持。 4.3.0
+如果启用了“fopen wrappers”的话，{source} 和 {dest} 都可以是
+URL。更多细节见 |fopen|。
+
+|copy| 例子
+
+<?php >
+  $file = 'example.txt';
+  $newfile = 'example.txt.bak';
+  
+  if (!copy($file, $newfile)) {
+      echo "failed to copy $file...\n";
+  }
+?>
+
+
+
+
+
+|move_uploaded_file| |rename| The section of the manual about handling file
+uploads
+
+vim:ft=help:

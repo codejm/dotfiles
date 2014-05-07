@@ -1,0 +1,116 @@
+ack.vim
+    代码搜索
+    https://github.com/mileszs/ack.vim.git
+ctrlp.vim
+    可以模糊查询定位：工程下的所有文件 历史打开文件
+    https://github.com/kien/ctrlp.vim.git
+JSON.vim:
+    json 高亮
+    https://github.com/vim-scripts/JSON.vim.git
+snipmate.vim
+    代码片段补全
+    https://github.com/msanders/snipmate.vim.git
+vim-airline
+    状态栏
+    https://github.com/bling/vim-airline.git
+vim-indent-object
+    代码块选择(没有"{}"这类) vii 選取相同縮排層級的文字 vai 同上，但會連帶上一層級也一併選取
+    https://github.com/michaeljsmith/vim-indent-object.git
+vim-nerdtree-tabs
+    目录树增强
+    https://github.com/jistr/vim-nerdtree-tabs.git
+vim-surround
+    修改删除配对符号""->''
+    https://github.com/tpope/vim-surround.git
+Align
+    代码对齐
+    https://github.com/vim-scripts/Align.git
+fcitx.vim
+    fcitx 修复
+    https://github.com/vim-scripts/fcitx.vim.git
+nerdcommenter:
+    代码注释
+    https://github.com/scrooloose/nerdcommenter.git
+supertab
+vim-colors-solarized
+vim-jade
+    Jade模板引擎(NODEJS)
+    https://github.com/digitaltoad/vim-jade.git
+vim-python-pep8-indent
+    python 缩进
+    https://github.com/hynek/vim-python-pep8-indent.git
+vimwiki
+    vimwiki维基世界
+    https://github.com/vim-scripts/vimwiki.git
+bufexplorer
+    打开历史文件列表
+    https://github.com/jlanzarotta/bufexplorer.git
+golang
+    go语言相关
+    https://github.com/jnwhiteh/vim-golang.git
+nerdtree
+    目录数
+    https://github.com/scrooloose/nerdtree.git
+syntastic
+    静态语法和编码风格检查
+    https://github.com/scrooloose/syntastic.git
+vim-easymotion
+    快速移动(字母跳转)
+    https://github.com/Lokaltog/vim-easymotion.git
+vim-javascript
+    更好的支持javascript
+    https://github.com/pangloss/vim-javascript.git
+vim-ragtag
+    产生对应的标签
+    https://github.com/tpope/vim-ragtag.git
+VisIncr
+    生成有序数据1-100...
+    https://github.com/vim-scripts/VisIncr.git
+calendar.vim
+    日历插件
+    https://github.com/itchyny/calendar.vim.git
+jquery.vim
+    jquery语法检查
+    https://github.com/vim-scripts/jQuery.git
+pydiction
+    python 自动补全插件
+    https://github.com/vim-scripts/Pydiction.git
+tabular
+    文本对齐工具
+    https://github.com/godlygeek/tabular.git
+vim-fugitive
+    vim git客户端
+    https://github.com/tpope/vim-fugitive.git
+vim-markdown
+    vim markdown语法高亮
+    https://github.com/plasticboy/vim-markdown.git
+vim-repeat
+    就是使用.号重复操作
+    https://github.com/tpope/vim-repeat.git
+colorselector.vim
+    颜色选择器
+    https://github.com/c9s/colorselector.vim.git
+jslint.vim
+    JavaScript语法检查插件
+    https://github.com/hallettj/jslint.vim.git
+scss-syntax.vim
+    scss 语法高亮
+    https://github.com/cakebaker/scss-syntax.vim.git
+taglist.vim
+    分割窗口形式显示当前的代码结构概览,增加代码浏览的便利程度
+    https://github.com/vim-scripts/taglist.vim.git
+vim-indent-guides
+    块状的缩进标识,竖线
+    https://github.com/nathanaelkane/vim-indent-guides.git
+vim-multiple-cursors
+    多重选取特性.进行多重编辑
+    https://github.com/terryma/vim-multiple-cursors.git
+VimRepress
+    使用vim和markdown撰写blog并发布到wordpress
+    https://github.com/pkufranky/VimRepress.git
+YankRing.vim
+    copy历史记录
+    https://github.com/vim-scripts/YankRing.vim.git
+zencoding-vim
+    快速编写html 新版emmet-vim
+    https://github.com/mattn/emmet-vim.git

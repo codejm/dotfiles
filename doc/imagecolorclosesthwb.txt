@@ -1,0 +1,39 @@
+imagecolorclosesthwb --
+取得与给定颜色最接近的色度的黑白色的索引
+
+  int imagecolorclosesthwb(resource image, int red, int green, int blue)~
+
+取得与给定颜色最接近的色度的黑白色的索引。
+
+{ image}An image resource, returned by one of the image creation functions,
+such as |imagecreatetruecolor|.
+
+{red} Value of red component.
+
+{green} Value of green component.
+
+{blue} Value of blue component.
+
+返回一个整数，是给定颜色最接近的色度的黑白色的索引。
+
+使用 |imagecolorclosesthwb| 的例子
+
+<?php >
+  $im = imagecreatefromgif('php.gif');
+  
+  echo 'HWB: ' . imagecolorclosesthwb($im, 116, 115, 152);
+  
+  imagedestroy($im);
+?>
+
+The above example will output something similar to:
+
+  HWB: 33
+
+
+
+Version Description 5.3.0 在 Windows 平台上可用
+
+|imagecolorclosest|
+
+vim:ft=help:

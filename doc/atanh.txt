@@ -1,0 +1,16 @@
+atanh -- 反双曲正切
+
+  float atanh(float arg)~
+
+返回 {arg} 的反双曲正切值，即，其双曲正切为 {arg}
+的那个值。
+
+{arg} 要处理的参数
+
+Inverse hyperbolic tangent of {arg}
+
+Version Description 5.3.0 此函数在所有平台上都可以用了
+
+|tanh| |atan| |asinh| |acosh|
+
+vim:ft=help:

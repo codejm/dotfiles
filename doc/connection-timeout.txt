@@ -1,0 +1,14 @@
+connection_timeout -- 检查脚本是否已超时
+
+  int connection_timeout()~
+
+检查脚本是否已超时。
+
+如果脚本已超时返回 1，否则返回 0。
+
+该函数已被废弃，从PHP4.0.5起不再存在。
+
+|connection_status| Connection Handling
+关于PHP连接处理的完整描述。
+
+vim:ft=help:

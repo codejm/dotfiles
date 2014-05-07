@@ -1,0 +1,67 @@
+imagegd2 -- 将 GD2 图像输出到浏览器或文件
+
+  bool imagegd2(resource image [, string filename [, int chunk_size [, int type]]])~
+
+|imagegd2| 将一个 GD 图像输出到 {filename}。{image}
+
+{ image}An image resource, returned by one of the image creation functions,
+such as |imagecreatetruecolor|.
+
+{filename} The path to save the file to. If not set or NULL, the raw image
+stream will be outputted directly.
+
+{chunk_size} Chunk size.
+
+{type} 可以是 IMG_GD2_RAW 或 IMG_GD2_COMPRESSED。默认为 IMG_GD2_RAW。
+
+Returns TRUE on success or &false; on failure.
+
+输出一个 GD2 图像
+
+<?php >
+  // Create a blank image and add some text
+  $im = imagecreatetruecolor(120, 20);
+  $text_color = imagecolorallocate($im, 233, 14, 91);
+  imagestring($im, 1, 5, 5,  "A Simple Text String", $text_color);
+  
+  // Output the image
+  imagegd2($im);
+  
+  // Free up memory
+  imagedestroy($im);
+?>
+
+
+
+
+
+保存 GD2 图像
+
+<?php >
+  // Create a blank image and add some text
+  $im = imagecreatetruecolor(120, 20);
+  $text_color = imagecolorallocate($im, 233, 14, 91);
+  imagestring($im, 1, 5, 5,  "A Simple Text String", $text_color);
+  
+  // Save the gd2 image
+  // The file format for GD2 images is .gd2, see http://www.libgd.org/GdFileFormats
+  imagegd2($im, 'simple.gd2');
+  
+  // Free up memory
+  imagedestroy($im);
+?>
+
+
+
+
+
+This function requires GD 2.0.1 or later (2.0.28 or later is recommended).
+
+GD2 格式一般是用来加载图像中的一部分时更快。注意 GD2
+格式只能用于兼容于 GD2 的应用程序。
+
+Version Description 4.3.2 添加了参数 {chunk_size} 和 {type}。
+
+|imagegd|
+
+vim:ft=help:

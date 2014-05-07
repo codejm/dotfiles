@@ -1,0 +1,95 @@
+imagejpeg -- Output image to browser or file
+
+  bool imagejpeg(resource image [, string filename [, int quality]])~
+
+|imagejpeg| 从 {image} 图像以 {filename} 为文件名创建一个 JPEG
+图像。
+
+{ image}An image resource, returned by one of the image creation functions,
+such as |imagecreatetruecolor|.
+
+{filename} The path to save the file to. If not set or NULL, the raw image
+stream will be outputted directly.
+
+如果要省略这个参数而提供 {quality} 参数，使用NULL。
+
+{quality} {quality} 为可选项，范围从
+0（最差质量，文件更小）到
+100（最佳质量，文件最大）。默认为 IJG
+默认的质量值（大约 75）。
+
+Returns TRUE on success or &false; on failure.
+
+输出 JPEG 图像
+
+<?php >
+  // 创键空白图像并添加一些文本
+  $im = imagecreatetruecolor(120, 20);
+  $text_color = imagecolorallocate($im, 233, 14, 91);
+  imagestring($im, 1, 5, 5,  'A Simple Text String', $text_color);
+  
+  // 设置内容类型标头 —— 这个例子里是 image/jpeg
+  header('Content-Type: image/jpeg');
+  
+  // 输出图像
+  imagejpeg($im);
+  
+  // 释放内存
+  imagedestroy($im);
+?>
+
+The above example will output something similar to:
+
+例子的输出：输出 JPEG 图像
+
+
+
+保存一副 JPEG 图像
+
+<?php >
+  // 创键空白图像并添加一些文本
+  $im = imagecreatetruecolor(120, 20);
+  $text_color = imagecolorallocate($im, 233, 14, 91);
+  imagestring($im, 1, 5, 5,  'A Simple Text String', $text_color);
+  
+  // 保存图像为 'simpletext.jpg'
+  imagejpeg($im, 'simpletext.jpg');
+  
+  // 释放内存
+  imagedestroy($im);
+?>
+
+
+
+
+
+以 75% 的图像质量输出图像
+
+<?php >
+  // 创键空白图像并添加一些文本
+  $im = imagecreatetruecolor(120, 20);
+  $text_color = imagecolorallocate($im, 233, 14, 91);
+  imagestring($im, 1, 5, 5,  'A Simple Text String', $text_color);
+  
+  // 设置内容类型标头 —— 这个例子里是 image/jpeg
+  header('Content-Type: image/jpeg');
+  
+  // 使用 NULL 跳过 filename 参数，并设置图像质量为 75%
+  imagejpeg($im, NULL, 75);
+  
+  // 释放内存
+  imagedestroy($im);
+?>
+
+
+
+
+
+JPEG support is only available if PHP was compiled against GD-1.8 or later.
+
+如果想输出渐进式 JPEG，需要用 |imageinterlace|
+函数将隔行扫描比特置位。
+
+|imagepng| |imagegif| |imagewbmp| |imageinterlace| |imagetypes|
+
+vim:ft=help:
