@@ -4,9 +4,16 @@ CODEJM vim党党员
 -----------------------------------------------
 ** vim安装 **
 `
+    windows:
     git clone https://github.com/codejm/Vim.git
     python 32位 : http://www.python.org/ftp/python/2.7.5/python-2.7.5.msi
     makedown-python : https://pypi.python.org/packages/source/M/Markdown/Markdown-2.3.1.zip#md5=39460227bfe10a8e8b88c90505226b90
+
+    linux:
+    git clone https://github.com/codejm/dotfiles.git ~/.vim
+    cd ~/.vim
+    git submodule init
+    git submodule update
 `
 
 ** Ack搜索 **
